@@ -1,0 +1,44 @@
+/* selection-panel.component.css */
+.mat-card {
+    max-width: 60%;
+    margin: 20px auto;
+    background-color: #fff; /* Set your desired background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-card-title {
+    font-size: 24px;
+    color: #333; /* Set your desired title color */
+  }
+  
+  .mat-form-field {
+    margin-bottom: 16px;
+  }
+  
+  .mat-elevation-z8 {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 16px;
+  }
+  
+  .mat-header-cell, .mat-cell {
+    padding: 12px;
+    text-align: left;
+ 
+  }
+  
+  .mat-header-row {
+    background-color: #bfbfbf; 
+  }
+  
+  .mat-row:nth-child(even) {
+    background-color: #f9f9f9; 
+  }
+  
+  .mat-paginator {
+    justify-content: end;
+
+  }
+  
+
+  

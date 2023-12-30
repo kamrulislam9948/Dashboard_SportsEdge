@@ -1,0 +1,96 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Event</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Home</a></li>
+                    <li class="breadcrumb-item active">Event</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section> 
+  
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="margin-right: 5px;">
+                  Event List |
+                  <div class="dropdown" style="display: inline-block; margin-left: 50px;">
+                      <a class="managerbtn dropdown-toggle" type="button" id="createDropdown"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          | Create new
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="createDropdown">
+                          <a class="dropdown-item" [routerLink]="['/admin/event-add']">Create Event</a>
+                          <a class="dropdown-item" [routerLink]="['/admin/manager-add']">Create Manager</a>
+                      </div>
+                  </div>
+              </h3>
+
+              <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 200px;">
+                      <input type="text" name="table_search" class="form-control" [(ngModel)]="searchInput"
+                      placeholder="Search" (input)="filterEvents()">
+                      <div class="input-group-append">
+                          <button type="submit" class="btn btn-default">
+                              <i class="fas fa-search"></i>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            <div class="card-body table-responsive p-0">
+              <table class="table table-head-fixed text-nowrap">
+                <thead>
+                  <tr>
+                    
+                    <th>Picture</th>
+                    <th>Event Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>                   
+                    <th>Location</th>
+                    <th>...</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let event of filteredEvents">
+                    <td>
+                      <img [src]="imagePath + '/' + event.picture" width="50" height="50">
+                  </td>                  
+                    <td>{{ event.eventName }}</td>
+                    <td>{{ event.startDate | date }}</td>
+                    <td>{{ event.endDate | date }}</td>                   
+                    <td>{{ event.location }}</td>
+                    <td>
+                      <a [routerLink]="['/admin/event-edit', event.eventId]" class="managerbtn"><mat-icon>edit</mat-icon></a>
+                          <!-- <a *ngIf="manager.managerId" (click)="openConfirmationDialog(manager.managerId)" class="managerbtn" >
+                              <mat-icon>delete</mat-icon>
+                          </a> -->
+                            
+                  </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right" >
+                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

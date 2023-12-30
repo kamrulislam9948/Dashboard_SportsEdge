@@ -1,0 +1,43 @@
+/* confirmation-delete.component.css */
+.confirmation-delete {
+    max-width: 500px;
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto; /* Center the dialog horizontally */
+}
+
+.confirmation-delete .header {
+    display: flex;
+    justify-content: center;
+    background-color: #ff2600; 
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+}
+
+
+.confirmation-delete .content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.confirmation-delete .buttons {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+/* Style the buttons */
+.confirmation-delete button {
+    min-width: 120px;
+    font-size: 14px;
+    margin: 10px;
+}
+.confirmation-delete button:hover {
+    background-color: #ff2600;
+    color: white;
+}
+

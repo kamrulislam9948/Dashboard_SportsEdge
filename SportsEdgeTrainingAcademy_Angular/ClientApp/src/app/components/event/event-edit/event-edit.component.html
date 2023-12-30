@@ -1,0 +1,145 @@
+<div class="wrapper">
+
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Edit Event</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Edit Event</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-8 mx-auto">
+          <!-- general form elements -->
+          <div class="card card-primary" style="height: 430px; overflow: auto;">
+            <div class="card-header" style="position: sticky; top: 0; z-index: 1; ">
+              <h3 class="card-title">Events Edit</h3>
+            </div>
+            <!-- /.card-header -->
+
+            <div class="text-center mt-3">
+              <img *ngIf="event.picture" [src]="getImageUrl(event.picture)" alt="Event Image"
+                class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
+            </div>
+            <!-- form start -->
+            <form class="eventAdd" [formGroup]="eventForm" (ngSubmit)="save()">
+              <div class="card-body">
+
+                <!-- <div class="form-group">
+                  <label for="managerId">Manager</label>
+                  <select class="form-control" id="managerId" formControlName="managerId">
+                    <option value="" disabled selected hidden>Select Manager</option>
+                    <option *ngFor="let manager of manager" [value]="manager.managerId">
+                      {{ manager.managerName }}
+                    </option>
+                  </select>
+                  <div *ngIf="f['managerId'].touched && f['managerId'].hasError('required')" class="text-danger">
+                    Manager is <strong>required</strong>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="selectionPanelId">Selection Panel</label>
+                  <select class="form-control" id="selectionPanelId" formControlName="selectionPanelId">
+                    <option value="" disabled selected hidden>Select Selection Panel</option>
+                    <option *ngFor="let selectionPanel of selectionPanels" [value]="selectionPanel.selectionPanelId">
+                      {{ selectionPanel.selectorName }}
+                    </option>
+                  </select>
+                  <div *ngIf="f['selectionPanelId'].touched && f['selectionPanelId'].hasError('required')" class="text-danger">
+                    Selector Name is <strong>required</strong>
+                  </div>
+                </div> -->
+                
+
+                <div class="form-group">
+                  <label for="eventName">Event Name</label>
+                  <input type="text" class="form-control" id="eventName" placeholder="Event Name"
+                    formControlName="eventName">
+                    <div *ngIf="f['eventName'].touched && f['eventName'].hasError('required') " class="text-danger">
+                      Event Name is <strong>required</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="startDate">Join Date</label>
+                  <input type="date" class="form-control" id="startDate" placeholder="Start Date"
+                    formControlName="startDate">
+                  <div *ngIf="eventForm?.get('startDate')?.hasError('required') && eventForm?.get('startDate')?.touched"
+                    class="text-danger">Start Date is required</div>
+                </div>
+                <div class="form-group">
+                  <label for="endDate">Join Date</label>
+                  <input type="date" class="form-control" id="endDate" placeholder="End Date"
+                    formControlName="endDate">
+                  <div *ngIf="eventForm?.get('endDate')?.hasError('required') && eventForm?.get('endDate')?.touched"
+                    class="text-danger">Join Date is required</div>
+                </div>
+
+                <div class="form-group">
+                  <label for="locations">Locations</label>
+                  <input type="text" class="form-control" id="locations" placeholder="Location"
+                    formControlName="location">
+                    <div *ngIf="f['location'].touched && f['location'].hasError('required') " class="text-danger">
+                      Locations is <strong>required</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <input type="text" class="form-control" id="description" placeholder="Description"
+                    formControlName="description" />
+                    <div *ngIf="f['description'].touched && f['description'].hasError('required') " class="text-danger">
+                      Description is <strong>required</strong>
+                    </div>
+                </div>
+                 <!-- Picture -->
+              <div class="custom-file form-group">
+                <label for="customFile" class="custom-file-label" [class.custom-file-chosen]="event.picture">{{
+                  event.picture || 'Choose Picture' }}</label>
+                <input type="file" class="custom-file-input" id="customFile" formControlName="picture"
+                  (change)="onFileSelect($event)" [readonly]="image != null" />
+                <div *ngIf="eventForm?.get('picture')?.hasError('required') && eventForm?.get('picture')?.touched"
+                  class="text-danger">Picture is required</div>
+              </div>     
+
+              <div class="row mt-2">
+                <div class="col-md-6">
+                  <button [routerLink]="['/admin/event-list']" type="button"
+                    class="btn btn-secondary btn-block d-flex align-items-center justify-content-center text-center"
+                    style="margin-bottom: 20px;">
+                    <mat-icon style="margin-right: 5px; ">arrow_back</mat-icon> Back
+                  </button>
+                </div>
+                <div class="col-md-6">
+                  <button type="submit" (click)="showSuccessNotification()"
+                    class="btn btn-success btn-block d-flex align-items-center justify-content-center text-center">
+                    <mat-icon style="margin-right: 5px;">save</mat-icon> Save
+                  </button>
+                </div>
+              </div>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<input type="file" #uploader hidden="true" (change)="onFileSelect($event)" />
+
+ {{eventForm.value|json}}
+ {{eventForm.valid}}
